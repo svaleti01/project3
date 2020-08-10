@@ -16,6 +16,7 @@ metadata:
     helm.sh/chart: {{ include "starter-kit.chart" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app: {{ .Release.Name }}
+    version: v1
     {{- if .Values.partOf }}
     app.kubernetes.io/part-of: {{ .Values.partOf }}
     {{- end}}
@@ -28,6 +29,8 @@ spec:
     matchLabels:
       app.kubernetes.io/name: {{ include "starter-kit.name" . }}
       app.kubernetes.io/instance: {{ .Release.Name }}
+      app: {{ .Release.Name }}
+      version: v1
   template:
     metadata:
       annotations:
